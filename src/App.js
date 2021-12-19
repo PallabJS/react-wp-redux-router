@@ -1,4 +1,5 @@
 function App() {
+    console.log(process.env["REACT_APP_PROJECTNAME"]);
     return (
         <div className="App">
             <header className="App-header">
