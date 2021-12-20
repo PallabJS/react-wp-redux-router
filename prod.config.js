@@ -1,0 +1,49 @@
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractCssIntoFile = require("mini-css-extract-plugin");
+
+let env = process.env;
+
+console.log(env);
+
+module.exports = {
+    mode: "production",
+    entry: "./src/index.js",
+    output: {
+        path: path.resolve(__dirname, "build"),
+        filename: "./static/js/main.js",
+        asyncChunks: true,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env", "@babel/preset-react"],
+                        plugins: ["@babel/transform-runtime"],
+                    },
+                },
+            },
+            {
+                test: /.s?css$/,
+                exclude: /node_modules/,
+                use: [ExtractCssIntoFile.loader, "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.(png|jpg|svg|gif|jpeg)$/,
+                exclude: /node_modules/,
+                type: "asset/resource",
+                generator: {
+                    filename: "./static/assets/[hash][ext]",
+                },
+            },
+        ],
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ template: "./public/index.html" }),
+        new ExtractCssIntoFile({ filename: "static/css/[name].css", chunkFilename: "[id].css" }),
+    ],
+};
