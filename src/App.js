@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+
+import ThemeProvider from "./core/theme";
 import "./app.scss";
+import ThemeSampler from "./components/ThemeSampler";
 
 const App = () => {
-    return <div>THIS IS A REACT WEBPACK TEMPLATE</div>;
+    return (
+        <ThemeProvider>
+            <ThemeSampler />
+        </ThemeProvider>
+    );
 };
 
 export default App;
