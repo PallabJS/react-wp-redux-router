@@ -4,10 +4,13 @@ import ThemeProvider from "./core/theme";
 import "./app.scss";
 import ThemeSampler from "./components/ThemeSampler";
 
+import Router from "./core/router";
+
 const App = () => {
     return (
         <ThemeProvider>
-            <ThemeSampler />
+            {/* <ThemeSampler /> */}
+            <Router />
         </ThemeProvider>
     );
 };

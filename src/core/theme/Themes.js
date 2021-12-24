@@ -47,6 +47,7 @@ const getThemeByMode = (mode) => ({
             styleOverrides: {
                 root: {
                     borderRadius: "0px",
+                    margin: 10,
                 },
             },
         },
@@ -54,6 +55,20 @@ const getThemeByMode = (mode) => ({
             styleOverrides: {
                 root: {
                     display: "none",
+                },
+            },
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    "& .MuiCardHeader-root": {
+                        "& .MuiCardHeader-title": {
+                            fontSize: "1.5rem",
+                        },
+                    },
+                    "& .MuiCardHeader-subheader": {
+                        fontSize: "1rem",
+                    },
                 },
             },
         },
