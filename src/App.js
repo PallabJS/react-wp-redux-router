@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
+import StoreProvider from "./core/redux/StoreProvider";
 import ThemeProvider from "./core/theme";
 import "./app.scss";
-import ThemeSampler from "./components/ThemeSampler";
 
-import Router from "./core/router";
+import AppRouter from "./core/router/AppRouter";
 
 const App = () => {
     return (
-        <ThemeProvider>
-            {/* <ThemeSampler /> */}
-            <Router />
-        </ThemeProvider>
+        <StoreProvider>
+            <ThemeProvider>
+                <AppRouter />
+            </ThemeProvider>
+        </StoreProvider>
     );
 };
 
