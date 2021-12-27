@@ -13,6 +13,12 @@ const getThemeByMode = (mode) => ({
             main: "#78909c",
             contrastText: "#fff",
         },
+        success: {
+            main: "#81c784",
+        },
+        fail: {
+            main: "#e53935",
+        },
         background: {
             paper: mode === "light" ? "#fffff" : "#263238",
         },
