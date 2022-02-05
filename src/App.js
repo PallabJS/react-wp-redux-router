@@ -11,6 +11,7 @@ const App = () => {
         <StoreProvider>
             <ThemeProvider>
                 <AppRouter />
+                asd
             </ThemeProvider>
         </StoreProvider>
     );

@@ -1,14 +1,11 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
 
 import { auths } from "../auth/AuthProvider";
 
 import Login from "../../components/login/Login";
 import Homepage from "../../components/homepage/Homepage";
 import Dashboard from "../../components/dashboard/Dashboard";
-import CryptoStats from "../../wazir/CryptoStats";
 import Premium from "../../components/premium/Premium";
-import FeatureLocked from "../../components/Misc/FeatureLocked";
 
 export const routes = [
     {
@@ -43,13 +40,6 @@ export const routes = [
         path: "/dashboard",
         allowedUsers: [auths.admin],
         component: <Dashboard />,
-        children: [],
-    },
-    {
-        name: "My Cypto Stats",
-        path: "/mcs",
-        allowedUsers: [auths.guest],
-        component: <CryptoStats />,
         children: [],
     },
 ];
