@@ -1,20 +1,38 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import StoreProvider from "./core/redux/StoreProvider";
-import ThemeProvider from "./core/theme";
-import "./app.scss";
-
-import AppRouter from "./core/router/AppRouter";
+import BrandingScreen from "./components/BrandingScreen";
+import { rootRoutes } from "./routes/routes";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
-    return (
+  const [appLoading, setApploading] = useState(false);
+
+  useEffect(() => {
+    let loaderId = setTimeout(() => {
+      setApploading(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(loaderId);
+    };
+  }, []);
+  return (
+    <>
+      {appLoading ? (
+        <BrandingScreen />
+      ) : (
         <StoreProvider>
-            <ThemeProvider>
-                <AppRouter />
-                asd
-            </ThemeProvider>
+          <BrowserRouter>
+            <Routes>
+              {rootRoutes.map((route, key) => {
+                return <Route key={key} path={route.path} element={route.component} />;
+              })}
+            </Routes>
+          </BrowserRouter>
         </StoreProvider>
-    );
+      )}
+    </>
+  );
 };
 
 export default App;
