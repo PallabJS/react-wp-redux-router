@@ -1,6 +1,16 @@
 import { createUseStyles } from "react-jss";
 import { coreColor, coreStyle } from "./styleDefinition";
 
+const rawPresets = {
+  buttonRaw: {
+    fontSize: coreStyle.fontSize.normal,
+    fontWeight: coreStyle.fontWeight[1],
+    border: coreStyle.border(1, coreColor.blue(0, 1000000)),
+    borderRadius: coreStyle.borderRadius[1],
+    padding: coreStyle.padding[0],
+  },
+};
+
 export const useCoreStyle = createUseStyles({
   bottomMargined5: { display: "block", marginBottom: 5 },
   bottomMargined10: { display: "block", marginBottom: 10 },
@@ -10,6 +20,7 @@ export const useCoreStyle = createUseStyles({
     boxShadow: coreStyle.boxShadow[3],
     borderRadius: coreStyle.borderRadius[1],
   },
+
   BorderLessBox: {
     padding: coreStyle.padding[2],
     borderRadius: coreStyle.borderRadius[1],
@@ -56,31 +67,34 @@ export const useCoreStyle = createUseStyles({
     gap: 10,
   },
 
-  primaryButton: {
-    minWidth: 80,
+  buttonRaw: {
     fontSize: coreStyle.fontSize.normal,
     fontWeight: coreStyle.fontWeight[1],
+  },
+
+  primaryButton: {
     color: coreColor.god(1),
-    backgroundColor: coreColor.blue(1),
-    border: coreStyle.border(1, coreColor.blue(0, 1000000)),
-    borderRadius: coreStyle.borderRadius[1],
-    padding: coreStyle.padding[1],
+    backgroundColor: coreColor.blue(1, 250),
     "&:active": {
       backgroundColor: coreColor.blue(1, 100),
     },
+    ...rawPresets.buttonRaw,
   },
   secondaryButton: {
-    minWidth: 80,
-    fontSize: coreStyle.fontSize.normal,
-    fontWeight: coreStyle.fontWeight[1],
     color: coreColor.god(1),
     backgroundColor: coreColor.red(1),
-    border: coreStyle.border(1, coreColor.blue(0, 1000000)),
-    borderRadius: coreStyle.borderRadius[1],
-    padding: coreStyle.padding[1],
     "&:active": {
       backgroundColor: coreColor.red(1, 100),
     },
+    ...rawPresets.buttonRaw,
+  },
+  infoButton: {
+    color: coreColor.god(1),
+    backgroundColor: coreColor.gray(1, 150),
+    "&:active": {
+      backgroundColor: coreColor.gray(1, 200),
+    },
+    ...rawPresets.buttonRaw,
   },
   primarylinkButton: {
     fontSize: coreStyle.fontSize.normal,

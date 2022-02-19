@@ -3,6 +3,7 @@ export const coreColor = {
   green: (o, s = 200) => `rgba(0, ${s}, 0, ${o})`,
   blue: (o, s = 200) => `rgba(0, ${s / 2}, ${s}, ${o})`,
   gray: (o, s = 200) => `rgba(${255 - s}, ${255 - s}, ${255 - s}, ${o})`,
+  yellow: (o, s = 200) => `rgba(${s}, ${s}, 0, ${o})`,
   god: (o, s = 250) => `rgba(${s}, ${s}, ${s}, ${o})`,
 };
 
@@ -20,11 +21,14 @@ export const coreStyle = {
     return borders[i];
   },
   borderRadius: ["2px", "5px", "10px", "20px"],
+  boxShadowf: (x, y, color) => {
+    return `0px 0px ${x}px ${y}px ${color}`;
+  },
   boxShadow: [
-    `0px 0px 1px 1px ${coreColor.gray(1, 100)}`,
-    `0px 0px 4px 1px ${coreColor.gray(1, 100)}`,
-    `0px 0px 10px 1px ${coreColor.gray(1, 100)}`,
-    `0px 0px 20px -1px ${coreColor.gray(1, 100)}`,
+    `0px 0px 1px 1px ${coreColor.gray(1, 50)}`,
+    `0px 0px 10px 1px ${coreColor.gray(1, 50)}`,
+    `0px 0px 20px 1px ${coreColor.gray(1, 50)}`,
+    `0px 0px 50px -1px ${coreColor.gray(1, 50)}`,
   ],
   fontSize: {
     tiny: "0.7rem",
@@ -36,7 +40,7 @@ export const coreStyle = {
     header: "2rem",
     boom: "3rem",
   },
-  fontWeight: ["100", "300", "500", "900"],
+  fontWeight: ["100", "300", "500", "700", "900"],
   textColor: {
     light: coreColor.god(1, 230),
     lightShade: coreColor.god(0.8, 180),

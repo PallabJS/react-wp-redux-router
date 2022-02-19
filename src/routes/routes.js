@@ -1,25 +1,23 @@
 import React from "react";
 
 import AuthProvider from "../components/AuthProvider";
+import NavProvider from "../components/NavProvider";
 
-import Homepage from "./Homepage";
+import PublicHome from "./PublicHome";
 import Login from "./Login";
 import OtpLogin from "./OtpLogin";
 import Signup from "./Signup";
+import Home from "./Home";
 
 export const routeNames = {
   login: "Login",
   signup: "Signup",
   homepage: "Homepage",
+  homepage_unauthorized: "Home",
   otpLogin: "Otp-Login",
 };
 
 export const rootRoutes = [
-  {
-    name: routeNames.homepage,
-    path: "/",
-    component: <AuthProvider routeName={routeNames.homepage} component={<Homepage />} />,
-  },
   {
     name: routeNames.login,
     path: "/login",
@@ -34,5 +32,26 @@ export const rootRoutes = [
     name: routeNames.otpLogin,
     path: "/otp-login",
     component: <AuthProvider routeName={routeNames.otpLogin} component={<OtpLogin />} />,
+  },
+  {
+    name: routeNames.homepage_unauthorized,
+    path: "/home",
+    component: (
+      <AuthProvider routeName={routeNames.homepage_unauthorized} component={<PublicHome />} />
+    ),
+  },
+  {
+    name: routeNames.homepage,
+    path: "/",
+    component: (
+      <AuthProvider
+        routeName={routeNames.homepage}
+        component={
+          <NavProvider>
+            <Home />
+          </NavProvider>
+        }
+      />
+    ),
   },
 ];
